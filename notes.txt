@@ -1,0 +1,188 @@
+================================================================================
+                          GIT BASICS & WORKFLOW GUIDE
+================================================================================
+
+WHAT IS GIT?
+Git is a version control system that tracks changes to files and allows collaboration.
+It helps you:
+- Track file history
+- Revert to previous versions
+- Work on features separately (branches)
+- Collaborate with others
+
+================================================================================
+                        BASIC WORKFLOW (MOST IMPORTANT!)
+================================================================================
+
+Step 1: MAKE CHANGES
+- Edit files in your project
+
+Step 2: STAGE CHANGES
+git add <filename>      # Add specific file
+git add .              # Add all files
+
+Step 3: COMMIT CHANGES
+git commit -m "descriptive message"
+
+Step 4: PUSH TO GITHUB
+git push
+
+IMPORTANT: If a file is already committed and hasn't changed, git add won't 
+stage it. You need to MODIFY THE FILE FIRST.
+
+================================================================================
+                        IMPORTANT GIT CONCEPTS
+================================================================================
+
+BRANCHES:
+- main: Your production/primary branch
+- feature1, feature2, etc: Branches for new features
+- Branches allow parallel development
+
+Check branches:
+git branch -a          # See all branches
+git branch             # See local branches
+
+MERGING BRANCHES:
+git merge <branch-name>     # Merge a branch into current branch
+After merge, files from the feature branch are combined into main.
+
+================================================================================
+                          KEY GIT COMMANDS
+================================================================================
+
+Command                          What it does
+================================================================================
+git status                       Check what files changed
+git add <file>                   Stage file for commit
+git add .                        Stage all files
+git commit -m "msg"              Create a commit with message
+git push                         Upload commits to GitHub
+git pull                         Download changes from GitHub
+git log --oneline                See commit history
+git branch -a                    See all branches
+git branch <name>                Create new branch
+git checkout <branch>            Switch to branch
+git merge <branch>               Merge a branch
+git diff <branch1> <branch2>     Compare branches
+git show <commit-id>             See details of a commit
+git restore <filename>           Undo changes in file
+git restore --staged <file>      Unstage a file
+
+================================================================================
+                            IMPORTANT RULES
+================================================================================
+
+DO:
+✓ Write CLEAR commit messages (e.g., "Add button feature", "Fix README typo")
+✓ Commit frequently with logical changes
+✓ Always push your work to GitHub
+✓ Use branches for new features
+✓ Pull before starting work if collaborating
+✓ Review changes before committing (git status, git diff)
+✓ SAVE FILES before running git add
+
+DON'T:
+✗ Commit without messages
+✗ Mix multiple unrelated changes in one commit
+✗ Forget to push your work
+✗ Work directly on main for big features (use branches)
+✗ Edit files and expect them to auto-stage
+✗ Leave uncommitted changes for long periods
+
+================================================================================
+                         WORKFLOW SUMMARY
+================================================================================
+
+1. CLONE/CREATE repository
+   git clone <url>    # Copy remote repo
+
+2. CREATE feature branch (optional but recommended)
+   git branch <feature-name>
+   git checkout <feature-name>
+
+3. MAKE CHANGES → STAGE → COMMIT → PUSH
+   git add .
+   git commit -m "message"
+   git push
+
+4. MERGE to main (when feature is ready)
+   git checkout main
+   git merge <feature-branch>
+   git push
+
+================================================================================
+                       GITHUB INTEGRATION
+================================================================================
+
+Local repo = Your computer
+Remote repo = GitHub (origin)
+git push = Send changes to GitHub
+git pull = Get changes from GitHub
+Pull Request = Request to merge feature branch to main (on GitHub)
+
+================================================================================
+                       COMMON SCENARIOS
+================================================================================
+
+SCENARIO: File doesn't stage
+Problem: git status shows clean but you edited a file
+Solution: Make sure you SAVED THE FILE (Ctrl+S), then git add
+
+SCENARIO: Merged feature to main
+Result: Files from feature branch are now in main, no separate folder needed
+Check: git log --oneline --graph --all shows merge
+
+SCENARIO: Want to undo changes
+git restore <filename>        # Undo changes in file
+git restore --staged <file>   # Unstage a file
+
+================================================================================
+                       TIPS FOR SUCCESS
+================================================================================
+
+1. COMMIT OFTEN - Small, logical commits are better than huge ones
+2. ALWAYS PUSH - Don't leave work on your computer only
+3. WRITE GOOD MESSAGES - Future you will thank you
+4. CHECK STATUS FREQUENTLY - Use git status before pushing
+5. USE BRANCHES - Keep main clean and stable
+6. PULL BEFORE WORK - Get latest changes if collaborating
+
+================================================================================
+                    WHAT YOU LEARNED TODAY
+================================================================================
+
+✓ Created and modified repositories
+✓ Staged files and committed changes
+✓ Pushed code to GitHub
+✓ Merged feature branches to main
+✓ Checked git history and status
+✓ Understood branches and commits
+
+NEXT STEPS: Practice these commands daily. Join a team project and collaborate!
+
+================================================================================
+                         QUICK REFERENCE
+================================================================================
+
+Daily Workflow:
+1. git status              # Check what changed
+2. git add .               # Stage all changes
+3. git commit -m "msg"     # Commit with message
+4. git push                # Push to GitHub
+
+Before Starting Work:
+1. git pull                # Get latest changes
+2. git branch              # Check current branch
+3. Start coding!
+
+When Creating Feature:
+1. git branch feature-name
+2. git checkout feature-name
+3. Make changes
+4. git add, commit, push
+5. Merge to main when done
+
+================================================================================
+Created: April 23, 2026
+================================================================================
