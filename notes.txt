@@ -184,5 +184,112 @@ When Creating Feature:
 5. Merge to main when done
 
 ================================================================================
-Created: April 23, 2026
+                   RESOLVING MERGE CONFLICTS
 ================================================================================
+
+WHAT IS A MERGE CONFLICT?
+A merge conflict happens when Git can't automatically combine changes from two
+branches because they modified the same lines in the same file.
+
+WHEN DOES IT HAPPEN?
+Scenario:
+- You on "main" edit line 5 of index.html
+- Someone on "feature1" also edits line 5 differently
+- You try to merge feature1 into main
+- Git says: "I don't know which version to use!"
+
+HOW TO IDENTIFY A CONFLICT:
+Run:
+git status
+
+Shows:
+Both modified:   index.html
+
+HOW TO RESOLVE IT:
+
+Step 1: Open the conflicted file
+Git marks conflicts like this:
+
+<<<<<<< HEAD
+<p>This is version A</p>
+=======
+<p>This is version B</p>
+>>>>>>> feature1
+
+Step 2: Choose which version to keep
+Three options:
+
+Option A: Keep your main version
+<p>This is version A</p>
+
+Option B: Keep feature1 version
+<p>This is version B</p>
+
+Option C: Keep BOTH versions
+<p>This is version A</p>
+<p>This is version B</p>
+
+Step 3: Remove the conflict markers
+Delete these lines completely:
+<<<<<<< HEAD
+=======
+>>>>>>> feature1
+
+Step 4: Stage, commit, and push
+git add index.html
+git commit -m "Resolve merge conflict in index.html"
+git push
+
+COMPLETE EXAMPLE:
+=================
+
+# Try to merge
+git merge feature1
+
+# Git says: CONFLICT!
+# Check status
+git status
+
+# Edit the file in your editor and choose versions
+# Remove the conflict markers
+
+# Stage the fixed file
+git add index.html
+
+# Commit the merge
+git commit -m "Resolve merge conflict"
+
+# Push to GitHub
+git push
+
+BEST PRACTICES TO AVOID CONFLICTS:
+===================================
+1. COMMUNICATE - Talk to team about what you're editing
+2. KEEP BRANCHES SHORT - Merge soon, don't work too long separately
+3. PULL FREQUENTLY - Stay updated with main branch
+4. EDIT DIFFERENT FILES - When possible, different team members edit different files
+5. USE BRANCHES - Don't all work on main
+
+QUICK CONFLICT SUMMARY:
+=======================
+Problem         → Git can't merge automatically
+Identify        → git status shows conflicts
+Find conflict   → Look for <<<<<<, ======, >>>>>> markers
+Choose version  → Keep the code you want
+Remove markers  → Delete <<<, ====, >>> lines
+Complete        → git add → git commit → git push
+
+COMMON COMMANDS FOR CONFLICTS:
+==============================
+git status                  # See which files have conflicts
+git diff                    # See the differences
+git merge --abort          # Cancel merge if you want to start over
+git rebase --abort         # Cancel rebase if you started one
+
+IMPORTANT:
+Only you can decide which code is correct. Git can't know - you must choose!
+
+================================================================================
+Created: April 23, 2026
+Updated: April 23, 2026 - Added Merge Conflict Resolution Guide
+===============================================================================
